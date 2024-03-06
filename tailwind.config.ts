@@ -2,13 +2,13 @@ import type { Config } from "tailwindcss";
 
 const { withUt } = require("uploadthing/tw");
 
-module.exports = withUt({
+export default withUt({
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx,mdx}",
   ],
   prefix: "",
   theme: {
