@@ -1,19 +1,20 @@
 "use client";
 
-import { ConfirmModal } from "@/components/modals/confirm-modal";
-import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-type ChapterActionsProps = {
+import { Button } from "@/components/ui/button";
+import { ConfirmModal } from "@/components/modals/confirm-modal";
+
+interface ChapterActionsProps {
   disabled: boolean;
   courseId: string;
   chapterId: string;
   isPublished: boolean;
-};
+}
 
 export const ChapterActions = ({
   disabled,
@@ -27,14 +28,21 @@ export const ChapterActions = ({
   const onClick = async () => {
     try {
       setIsLoading(true);
+
       if (isPublished) {
-        await axios.patch(`/api/courses/${courseId}/unpublish`);
+        await axios.patch(
+          `/api/courses/${courseId}/chapters/${chapterId}/unpublish`
+        );
         toast.success("Chapter unpublished");
       } else {
-        await axios.patch(`/api/courses/${courseId}/publish`);
+        await axios.patch(
+          `/api/courses/${courseId}/chapters/${chapterId}/publish`
+        );
         toast.success("Chapter published");
       }
-    } catch (error) {
+
+      router.refresh();
+    } catch {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
@@ -50,7 +58,7 @@ export const ChapterActions = ({
       toast.success("Chapter deleted");
       router.refresh();
       router.push(`/teacher/courses/${courseId}`);
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
