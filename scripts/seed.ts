@@ -11,11 +11,10 @@ async function main() {
         { name: "Fitness" },
         { name: "Photography" },
         { name: "Accounting" },
-        { name: "Engineering" },
+        // { name: "Engineering" },
         { name: "Video Editing" },
       ],
     });
-
     console.log("sucess");
   } catch (error) {
     console.log("Error seeding the database categories", error);

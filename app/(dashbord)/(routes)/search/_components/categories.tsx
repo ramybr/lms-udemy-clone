@@ -22,8 +22,8 @@ const iconMap: Record<Category["name"], IconType> = {
   Fitness: FcSportsMode,
   Accounting: FcSalesPerformance,
   "Computer Science": FcMultipleDevices,
-  Filming: FcFilmReel,
-  Engineering: FcEngineering,
+  "Video Editing": FcFilmReel,
+  Engeneering: FcEngineering,
 };
 
 export const Categories = ({ items }: CategoriesProps) => {
