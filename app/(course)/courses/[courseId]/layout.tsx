@@ -6,7 +6,6 @@ import { getProgress } from "@/actions/get-progress";
 
 import { CourseSidebar } from "./_components/course-sidebar";
 import { CourseNavbar } from "./_components/course-navbar";
-// import { CourseNavbar } from "./_components/course-navbar";
 
 const CourseLayout = async ({
   children,
